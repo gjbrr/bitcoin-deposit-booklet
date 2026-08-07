@@ -18,6 +18,7 @@ def normalize_to_xpub(key):
     (e.g. zpub) represents. Purely a public-key/encoding operation -- no
     private key material is ever involved.
     """
+    key = "".join(key.split())
     raw = base58.b58decode_check(key)
     if len(raw) != 78:
         raise ValueError(f"Not a valid extended key (unexpected length {len(raw)})")
