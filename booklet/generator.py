@@ -1,6 +1,8 @@
-from constants import (OUTDIR,PAGE_H, PAGE_W, STRIP_H,SLOTS_PER_SHEET)
+from booklet.constants import (OUTDIR,PAGE_H, PAGE_W, STRIP_H,SLOTS_PER_SHEET)
 
 import os
+from io import BytesIO
+
 from bitcoin.derive import derive_addresses
 from booklet.renderers import (
     render_cover,
@@ -48,7 +50,7 @@ def paginate(c, ctx, addresses, zpub, ln_address):
         c.showPage()
 
 # ---------- BUILD ONE BOOK ----------
-def generate_booklet(label, zpub, num_addresses, filename, ln_address):
+def generate_booklet_pdf(label, zpub, num_addresses, filename, ln_address):
     addresses = derive_addresses(zpub, num_addresses)
     ctx = {"title": f"{label}'s Bitcoin Deposit Book" if label else "My Bitcoin Deposit Book"}
     outpath = os.path.join(OUTDIR, filename)
@@ -58,4 +60,21 @@ def generate_booklet(label, zpub, num_addresses, filename, ln_address):
     print(f"Saved {outpath}  ({num_addresses} addresses, {label})")
     return outpath
 
+
+# ---------- BUILD ONE BOOK online ----------
+def generate_booklet(zpub, title, lightning_address, num_addresses):
+    addresses = derive_addresses(zpub, num_addresses)
+    ctx = {"title": f"{title}'s Bitcoin Deposit Book" if title else "My Bitcoin Deposit Book"}
+    
+    #c = canvas.Canvas(outpath, pagesize=(PAGE_W, PAGE_H))
+    
+    buffer = BytesIO()
+    c = canvas.Canvas(buffer, pagesize=(PAGE_W, PAGE_H))
+    paginate(c, ctx, addresses,zpub, lightning_address)
+    
+    c.save()
+
+    buffer.seek(0)
+
+    return buffer
 

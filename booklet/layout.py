@@ -1,6 +1,6 @@
 
 import random
-from constants import (LGRAY, GRAY, GUTTER,STRIP_W, RIGHT_MARGIN, PAGE_W, black,white)
+from booklet.constants import (LGRAY, GRAY, GUTTER,STRIP_W, RIGHT_MARGIN, PAGE_W, black,white)
 from reportlab.lib.units import inch
 
 # ---------- LINE-ART HELPERS (black only, B&W friendly) ----------

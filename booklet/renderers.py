@@ -1,6 +1,6 @@
 
 
-from constants import (GUTTER, STRIP_W, black,white, GRAY,DERIVATION_DISPLAY,RIGHT_MARGIN,LGRAY,PERF_X)
+from booklet.constants import (GUTTER, STRIP_W, black,white, GRAY,DERIVATION_DISPLAY,RIGHT_MARGIN,LGRAY,PERF_X)
 from reportlab.lib.units import inch
 
 from booklet.layout import (
