@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+myenv/
+
+# Environment / secrets
+.env
+*.key
+*.pem
+config.local.*
+
+# Jupyter
+.ipynb_checkpoints
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Node (if any JS tooling for the browser side)
+node_modules/
+npm-debug.log*
+
+# Build output
+dist/
+build/
+*.min.js
