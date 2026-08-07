@@ -1,3 +1,6 @@
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 
@@ -14,6 +17,14 @@ class GenerateRequest(BaseModel):
     num_addresses: int = 25
 
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+@app.get("/")
+def home():
+    return FileResponse("static/index.html")
+
 @app.post("/generate", response_class=StreamingResponse)
 
 def generate(request: GenerateRequest):

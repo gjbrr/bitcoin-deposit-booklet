@@ -1,0 +1,81 @@
+<!-- static/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Deposit Booklet</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <main class="container">
+
+        <header>
+            <div class="pig">🐷</div>
+            <h1>Bitcoin Deposit Booklet</h1>
+            <p class="subtitle">
+                Turn a public Bitcoin extended key into a printable savings booklet.
+            </p>
+        </header>
+
+        <form id="booklet-form">
+
+            <label for="title">Book title</label>
+            <input
+                id="title"
+                name="title"
+                type="text"
+                placeholder="Gary"
+                required
+            >
+
+            <label for="zpub">Extended public key (zpub)</label>
+            <textarea
+                id="zpub"
+                name="zpub"
+                rows="4"
+                placeholder="zpub..."
+                required
+            ></textarea>
+
+            <p class="hint">
+                Public extended keys only. Never paste a seed phrase or private key.
+            </p>
+
+            <label for="lightning_address">
+                Lightning address <span>(optional)</span>
+            </label>
+            <input
+                id="lightning_address"
+                name="lightning_address"
+                type="text"
+                placeholder="name@example.com"
+            >
+
+            <label for="num_addresses">Number of deposit slips</label>
+            <select id="num_addresses" name="num_addresses">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25" selected>25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+
+            <button type="submit" id="generate-button">
+                Generate Booklet
+            </button>
+
+            <p id="status"></p>
+
+        </form>
+
+        <footer>
+            No accounts. No wallet connection. No private keys.
+        </footer>
+
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
