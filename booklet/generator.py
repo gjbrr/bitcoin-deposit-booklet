@@ -10,6 +10,7 @@ from booklet.renderers import (
     render_wallet_info,
     render_ledger,
     render_check,
+    render_ln_address,
     hcut_line
     )
 
